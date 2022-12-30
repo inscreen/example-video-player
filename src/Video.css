@@ -14,10 +14,24 @@
     background-color: white;
 }
 
-.comments-track {
+.progress-bar {
     width: 100%;
     position: absolute;
     bottom: 0;
+    height: 15px;
+    background-color: lightgrey;
+}
+
+.progress-marker {
+    height: 100%;
+    background-color: navy;
+    pointer-events: none;
+}
+
+.comments-track {
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
 }
 
 .play-pause {

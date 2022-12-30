@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { MouseEvent, useCallback, useEffect, useState } from 'react';
 import './Video.css';
 
 const VIDEO_LENGTH = 110; // the video length in seconds
@@ -7,6 +7,10 @@ export default function Video() {
     const [running, setRunning] = useState(true);
     const [time, setTime] = useState(0);
     const [showComments, setShowComments] = useState(true);
+    const onProgressSeek = useCallback(function (event: MouseEvent<HTMLElement>) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        setTime(Math.floor(((event.clientX - rect.left) / rect.width) * VIDEO_LENGTH));
+    }, []);
 
     useEffect(() => {
         if (running) {
@@ -38,7 +42,10 @@ export default function Video() {
     return (
         <div className="player">
             <div className="video">
-                <div className="video-content">Hey {time}</div>
+                <div className="video-content">Hey {new Date(time * 1000).toISOString().slice(14, 19)}</div>
+                <div className="progress-bar" onClick={onProgressSeek}>
+                    <div className="progress-marker" style={{ width: `${(time / VIDEO_LENGTH) * 100}%` }}></div>
+                </div>
                 <div className="comments-track">
                     {showComments && (
                         <inscreen-inline-timeline-threads-display
