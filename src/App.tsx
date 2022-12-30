@@ -15,6 +15,9 @@ async function waitForInScreen() {
     }
 }
 
+// Note: this function uses sandbox authentication.
+// In a real application, the token is created by the application's back-end server.
+// https://docs.inscreen.com/introduction/using-sandbox-without-server
 async function initializeInScreen() {
     await waitForInScreen();
     const response = await fetch('https://us.inscreen.com/api/self-service/auth', {
