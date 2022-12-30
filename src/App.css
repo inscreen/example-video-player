@@ -1,0 +1,12 @@
+body {
+    padding: 1rem 15rem;
+    background-color: #e8e8e8;
+}
+
+inscreen-inline-anchor-indicator {
+    --inscreen-base-z-index: 100;
+}
+
+p {
+    width: 800px;
+}
