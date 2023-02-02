@@ -36,12 +36,12 @@ interface ClientEvent {
 declare global {
     interface Window {
         inScreen: {
-            initialize: (options: InScreenSdkOptions) => void;
-            listenToTimelineActivations: (
+            initialize(options: InScreenSdkOptions): void;
+            listenToTimelineActivations(
                 listener: (payload: { locator: string; value: number }) => boolean,
-            ) => () => void;
-            startThread: (locator: string, behavior: BehaviorType) => void;
-            addClientEventsListener: (listener: (ev: CustomEvent<ClientEvent>) => void) => void;
+            ): () => void;
+            startThread(locator: string, behavior: BehaviorType): void;
+            addClientEventsListener(listener: (ev: CustomEvent<ClientEvent>) => void): void;
             // Add additional methods from https://docs.inscreen.com/apis/client-side as needed
         };
     }
